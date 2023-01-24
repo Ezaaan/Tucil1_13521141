@@ -10,6 +10,8 @@ int main(){
     //Begin time1
     double time1 = 0.0;
     clock_t begin1 = clock();
+
+    //Splash screen
     printf(".------..------.        .------..------..------..------.        .------..------..------..------..------.\n");
     printf("|2.--. ||4.--. | .-.    |C.--. ||A.--. ||R.--. ||D.--. | .-.    |G.--. ||A.--. ||M.--. ||E.--. ||!.--. |\n");
     printf("| (\\/) || :/\\: |(( ))   | :/\\: || (\\/) || :(): || :/\\: |(( ))   | :/\\: || (\\/) || (\\/) || (\\/) || (\\/) |\n");
@@ -86,6 +88,16 @@ int main(){
         num2 = convertToNum(card2);
         num3 = convertToNum(card3);
         num4 = convertToNum(card4);
+
+        while(num1 == 0 || num2 == 0 || num3 == 0 || num4 == 0){
+            printf("| Invalid card(s)! Please try again\n");
+            printf("| Please input 4 cards: ");
+            scanf("%s %s %s %s", card1, card2, card3, card4);
+            num1 = convertToNum(card1);
+            num2 = convertToNum(card2);
+            num3 = convertToNum(card3);
+            num4 = convertToNum(card4);
+        }
         //End time2_5
         clock_t end2_5 = clock();
         time2_5 += (double)(end2_5 - begin2_5) / CLOCKS_PER_SEC;
@@ -249,6 +261,8 @@ int convertToNum(char* card){
     if(strcmp(card, "K") == 0 || strcmp(card, "13") == 0){
         return 13;
     }
+
+    return 0;
 }
 
 void displayOps(Buffer buff){
